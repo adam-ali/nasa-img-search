@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 export default class Search extends Component {
   
@@ -99,9 +100,11 @@ export default class Search extends Component {
         <div className='container'>
           {this.state.searchResults.map((item,i)=>{
             let img = item.imgUrls.find(i=>RegExp('\\bthumb\\b').test(i));
-
+            let url_id = item.data.nasa_id
             return (
               <div key={i} className='item'>
+                <Link to={{ pathname:`/asset/${url_id}`,state: {data: item} }}>aaaaa</Link>
+                
                 <img src={img} onClick={this.navigate} />
               </div>
             )
